@@ -9,11 +9,20 @@ public class HistogramDatabase {
     private String jdbcURL = "jdbc:mysql://localhost:3306/histogram";
     private String username = "root";
     private String password = "Lhtmilk2027";
-    private ArrayList<Double> dataPoints = new ArrayList<>();
-    private int bin,data;
-    private ArrayList<Double> cutsoffs = new ArrayList<>();
-    private ArrayList<Integer> dataInRange = new ArrayList<>();
 
+    /***
+     * The double type of array list store the data
+     */
+    private ArrayList<Double> dataPoints = new ArrayList<>();
+
+    /***
+     * Number of data and number of bins
+     */
+    private int bin,data;
+
+    /***
+     * Retrieve number of data and the number of bins
+     */
     public void retrieveNumberOfData(){
         try{
             Connection connection = DriverManager.getConnection(jdbcURL,username,password);
@@ -32,7 +41,9 @@ public class HistogramDatabase {
         }
     }
 
-
+    /***
+     * Retrieve all the data inside the database
+     */
     public void retrieveData(){
         try{
             Connection connection = DriverManager.getConnection(jdbcURL,username,password);
@@ -53,6 +64,10 @@ public class HistogramDatabase {
         }
     }
 
+    /***
+     * Gather all the data inside the database
+     * @return all the data in the database
+     */
     public double[] getData(){
         double[] datapoint = new double[dataPoints.size()];
         for(int i=0;i<dataPoints.size();i++) {
@@ -61,40 +76,12 @@ public class HistogramDatabase {
         return datapoint;
     }
 
+    /***
+     * Get the number of bins
+     * @return number of bins
+     */
     public int getBin(){
         return bin;
     }
 
-//    public ArrayList<Integer> getCutsoffs(){
-//        double min = dataPoints.get(0);
-//        double max = dataPoints.get(dataPoints.size()-1);
-//        double interval = (max-min)/bin;
-//        double temp = min;
-//        for(int i=0;i<bin;i++){
-//            cutsoffs.add(temp);
-//            temp += interval;
-//        }
-//        return cutsoffs;
-//    }
-
-//    public ArrayList<Integer> getDataInRange(){
-//        int temp = 1;
-//        int k = cutsoffs.get(temp);
-//        int counter = 0;
-//        for (int i = 0; i < dataPoints.size(); i++) {
-//            if (dataPoints.get(i) < k) {
-//                counter++;
-//            } else {
-//                temp++;
-//                if (temp == cutsoffs.size()) {
-//                    dataInRange.add(++counter);
-//                    break;
-//                }
-//                dataInRange.add(counter);
-//                counter = 1;
-//                k = cutsoffs.get(temp);
-//            }
-//        }
-//        return dataInRange;
-//    }
 }

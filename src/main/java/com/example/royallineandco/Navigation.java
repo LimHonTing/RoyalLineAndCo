@@ -5,9 +5,14 @@ import java.util.Scanner;
 public class Navigation {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Number of test cases: ");
+        /***
+         * Number of the test cases
+         */
         int num = Integer.valueOf(scanner.nextLine());
         for (int i = 0; i < num; i++) {
+            /***
+             * Number of the connection in this graph
+             */
             System.out.print("Number of connections: ");
             int numberOfConnections = Integer.valueOf(scanner.nextLine());
             Graph graph = new Graph();
@@ -19,6 +24,9 @@ public class Navigation {
                 graph.addEdge(stations[0], stations[1]);
                 graph.addEdge(stations[1], stations[0]);
             }
+            /***
+             * The number of queries from user
+             */
             int queries = Integer.valueOf(scanner.nextLine());
             for (int z = 0; z < queries; z++) {
                 String input = scanner.nextLine();

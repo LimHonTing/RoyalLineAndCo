@@ -4,18 +4,36 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Graph <T extends Comparable<T>,N extends Comparable <N>>{
+    /***
+     * Head of the vertex
+     */
     Vertex<T,N> head;
+    /***
+     * size of the graph
+     */
     int size;
 
+    /***
+     * Initialize the graph
+     */
     public Graph(){
         head = null;
         size = 0;
     }
 
+    /***
+     * To get the size of graph
+     * @return size of graph
+     */
     public int getSize(){
         return size;
     }
 
+    /***
+     * Check whether the vertex is exist inside the graph or not
+     * @param v Vertex Information
+     * @return boolean
+     */
     public boolean hasVertex(T v){
         if(head == null){
             return false;
@@ -30,19 +48,11 @@ public class Graph <T extends Comparable<T>,N extends Comparable <N>>{
         return false;
     }
 
-    public int getIndeg(T v){
-        if(hasVertex(v) == true){
-            Vertex<T,N> temp = head;
-            while(temp != null){
-                if(temp.vertexInfo.compareTo(v) == 0){
-                    return temp.indeg;
-                }
-                temp = temp.nextVertex;
-            }
-        }
-        return -1;
-    }
-
+    /***
+     * Add vertex to the graph
+     * @param v Vertex Information
+     * @return boolean
+     */
     public boolean addVertex(T v){
         if(hasVertex(v) == false){
             Vertex<T,N> temp = head;
@@ -64,6 +74,12 @@ public class Graph <T extends Comparable<T>,N extends Comparable <N>>{
             return false;
     }
 
+    /***
+     * Check whether the edge is exist or not
+     * @param source the source Vertex
+     * @param destination the destination vertex
+     * @return boolean
+     */
     public boolean hasEdge(T source, T destination){
         if(head == null){
             return false;
@@ -87,6 +103,12 @@ public class Graph <T extends Comparable<T>,N extends Comparable <N>>{
         return false;
     }
 
+    /***
+     * Add the edge to the graph
+     * @param source Source vertex to be added
+     * @param destination the link to the destination
+     * @return boolean
+     */
     public boolean addEdge(T source, T destination){
         if(head == null){
             return false;
@@ -111,8 +133,6 @@ public class Graph <T extends Comparable<T>,N extends Comparable <N>>{
                         }
                         Edge<T,N> newEdge = new Edge<>(destinationVertex,null);
                         currentEdge.nextEdge = newEdge;
-                        sourceVertex.outdeg++;
-                        destinationVertex.indeg++;
                         return true;
                     }
                     destinationVertex = destinationVertex.nextVertex;
@@ -123,6 +143,11 @@ public class Graph <T extends Comparable<T>,N extends Comparable <N>>{
         return false;
     }
 
+    /***
+     * Get all the connection for the vertex
+     * @param v Vertex as a starting point
+     * @return a list of vertex that have connection with this vertex
+     */
     public ArrayList<Vertex<T,N>> getNeighbours(Vertex<T,N> v){
         if(!hasVertex(v.vertexInfo)){
             return null;
@@ -142,6 +167,12 @@ public class Graph <T extends Comparable<T>,N extends Comparable <N>>{
         return list;
     }
 
+    /***
+     * Breath First Search Algorithm to search shortest path
+     * @param source Starting point of the user
+     * @param destination Destination of the user want to reach
+     * @return A string which is the path from start to end
+     */
     public String bfs(T source, T destination){
         //Create queue
         LinkedList<Vertex> queue = new LinkedList<>();
@@ -195,7 +226,12 @@ public class Graph <T extends Comparable<T>,N extends Comparable <N>>{
         return ans;
     }
 
-    //Function to trace the route using preceding nodes
+    /***
+     * Function to trace the route using preceding nodes
+     * @param source Starting point of the path
+     * @param destination End point of the path
+     * @return the route from start to end
+     */
     private String trace_route(T source,T destination){
         Vertex<T,N> destinationVertex = head;
         while(destinationVertex != null){

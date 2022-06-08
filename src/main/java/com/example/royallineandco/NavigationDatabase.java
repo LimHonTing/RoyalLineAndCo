@@ -8,6 +8,9 @@ public class NavigationDatabase {
     private String password = "Lhtmilk2027";
     public Graph graph = new Graph();
 
+    /***
+     * Retrieve the information from station to station and adding them into graph
+     */
     public void retrieve(){
         try{
             Connection connection = DriverManager.getConnection(jdbcURL,username,password);
@@ -24,26 +27,6 @@ public class NavigationDatabase {
                 graph.addVertex(destination);
                 graph.addEdge(origin, destination);
                 graph.addEdge(destination, origin);
-            }
-            connection.close();
-        }catch(SQLException ex){
-            ex.printStackTrace();
-        }
-    }
-
-    public void enquiry(){
-        try{
-            Connection connection = DriverManager.getConnection(jdbcURL,username,password);
-
-            String sql = "SELECT startpoint, endpoint FROM book1";
-
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery(sql);
-
-            while(result.next()){
-                String startpoint = result.getString("startpoint");
-                String endpoint = result.getString("endpoint");
-                graph.bfs(startpoint, endpoint);
             }
             connection.close();
         }catch(SQLException ex){

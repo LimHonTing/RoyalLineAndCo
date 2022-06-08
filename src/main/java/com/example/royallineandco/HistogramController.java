@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -22,17 +21,34 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.statistics.HistogramDataset;
 
 public class HistogramController implements Initializable {
+    /***
+     * A button that can go back to Main Page
+     */
     @FXML private Button BackButton;
-    @FXML private BarChart Histogram;
+
+    /***
+     * Initialize a histogram database
+     */
     private HistogramDatabase a = new HistogramDatabase();
 
 
+    /***
+     * Go back to the home page if user click this button
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void goToHomePage(MouseEvent mouseEvent) throws IOException {
         Parent loader = FXMLLoader.load(getClass().getResource("Home-Page.fxml"));
         Stage window = (Stage) BackButton.getScene().getWindow();
         window.setScene(new Scene(loader));
     }
 
+    /***
+     * Collect all the data needed from database to perform histogram
+     * Using JFreeChart to show the histogram and save as PNG file
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         a.retrieveNumberOfData();
