@@ -13,7 +13,6 @@ public class Navigation {
             /***
              * Number of the connection in this graph
              */
-            System.out.print("Number of connections: ");
             int numberOfConnections = Integer.valueOf(scanner.nextLine());
             Graph graph = new Graph();
             for (int j = 0; j < numberOfConnections; j++) {
