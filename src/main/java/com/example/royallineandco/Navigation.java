@@ -16,8 +16,7 @@ public class Navigation {
             int numberOfConnections = Integer.valueOf(scanner.nextLine());
             Graph graph = new Graph();
             for (int j = 0; j < numberOfConnections; j++) {
-                String input = scanner.nextLine();
-                String[] stations = input.split(" => ");
+                String[] stations = scanner.nextLine().split(" => ");
                 graph.addVertex(stations[0]);
                 graph.addVertex(stations[1]);
                 graph.addEdge(stations[0], stations[1]);
