@@ -8,7 +8,7 @@ public class Histogram {
         Scanner scanner = new Scanner(System.in);
         //Number of test cases
         int numberOfTestCases = scanner.nextInt();
-        for(int i=0;i<numberOfTestCases;i++){;
+        for(int i=0;i<numberOfTestCases;i++){
             //number of data
             int numberOfDataPoints = scanner.nextInt();
             //number of bins to put the data
