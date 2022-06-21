@@ -8,5 +8,5 @@ Group Members:
 | ---------------------- | ------------- |
 | Lim Hon Ting           | S2114212      |
 | Guan Ming Li           | U2102768      |
-| Ong Shi Nee            | U2102773      |
-| Jaslene Chia Pei Xin   | U2102783      |
+| Chia Pei Xin           | U2102773      |
+| Ong Shi Nee            | U2102783      |
